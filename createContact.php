@@ -1,4 +1,6 @@
 <?php include "templates/header.php";
+		if(!isset($_SESSION["connected"]))
+		header("Location: createContact.php");
 ?>
 
   <form action="createContact.php" method="POST">
@@ -22,13 +24,13 @@
 		$Name = $_POST['name'];
 		$Phone = $_POST['phoneNumber'];
 		$Mobile = $_POST['mobileNumber'];
-		
+		$ID = $_GET['userid'];
 
 		$sql = "SELECT * FROM contacts WHERE username='$Username'";
 		$result = $mysqli->query($sql);
 
 		if ($result->num_rows == 0)  {
-			$sql = "INSERT INTO contacts ( name, phoneNo, mobileNo) VALUES ('$Name' , '$Phone', '$Mobile')";
+			$sql = "INSERT INTO contacts ( name, phoneNo, mobileNo, userid) VALUES ('$Name' , '$Phone', '$Mobile', '$ID')";
 			$insert = $mysqli->query($sql);
 	
 			if ( $insert ) { ?>

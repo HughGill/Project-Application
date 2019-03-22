@@ -4,51 +4,19 @@
 ?>
 
 
-
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">Settings</h1>
 <div class="modal-dialog modal-lg modal-dialog-centered">	
-	<div id="container">
+	<div class="nav nav-tabs nav-stacked" style="width:device-width">
 		<ul class="nav nav-pills nav-stacked">
 			<li>
-				<a href="profile.php" style="color:black">Profile   <i class="fas fa-user"></i></a>
+				<a href="profile.php" data-toggle="tab" style="color:black">Profile   <i class="fas fa-user"></i></a>
 			</li>
 		
 			<li>
-				<a href="logout.php" style="color:black">Logout    <i class="fas fa-sign-out-alt"></i></a>
+				<a href="logout.php" data-toggle="tab" style="color:black">Logout    <i class="fas fa-sign-out-alt"></i></a>
 			</li>
 		</ul>
 	</div>
-	<div id="nav-container">
-		<ul class="nav nav-tabs nav-justified">
-			<li>
-				<a href="phone.php" style="color:black">
-					<button class="tablinks">
-						<i class="fas fa-phone"></i>
-					</button>
-				</a>
-			</li>
-			<li>
-				<a href="message.php" style="color:black">
-					<button class="tablinks">
-						<i class="fas fa-envelope"></i>
-					</button>
-				</a>
-			</li>
-			<li>
-				<a href="blocked.php" style="color:black">
-					<button>
-						<i class="fas fa-ban"></i>
-					</button>
-				</a>
-			</li>
-			<li class="active">
-				<a href="#" style="color:black">
-					<button class="tablinks">
-						<i class="fas fa-cog"></i>
-					</button>
-				</a>
-			</li>
-		</ul>
-	</div>	
 <div>
 		
 		

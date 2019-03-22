@@ -14,10 +14,9 @@
 			</div>
 			<div class="form-group">
 				<p><i style='font-size:24px' class='fas' aria-hidden="true" for="password">&#xf023;</i>
-				<input type="password" class="form-control" id="password" placeholder="Password" name="password" required></p>
+				<input type="password" class="form-control" id="loginpassword" placeholder="Password" name="loginpassword" required></p>
 			</div>
 				<button type="submit" class="btn btn-primary">Login</button>
-				<a href="register.html"><button id="register" name="register" class="btn btn-default">Register</button></a>
 		</form>
 </div>
 
@@ -26,12 +25,28 @@
 	if (! empty( $_POST ) )
 	{
 		$Username = $_POST['username'];
-		$Password = $_POST['password'];
+		$Password = $_POST['loginpassword'];
+		$Hash = $_GET['password'];
+		//$VerifyPassword = verify_if($Password, $Hash);
 
-		$sql = "SELECT * FROM users WHERE username='$Username' AND password='$Password'";
+		$sql = "SELECT * FROM users WHERE BINARY username='$Username' AND password='$Password'";
 		$select = $mysqli->query($sql);
 
-		if ( $select->num_rows > 0 && verify_if($Password, $Hash)) {
+
+		//$VerifyPassword==true;
+
+
+		if( $select->num_rows > 0 ) {?>
+			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+				Invalid Password
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			exit;
+		<?php }
+
+		if ( $select->num_rows > 0 ) {
 			$row = $select->fetch_assoc();
 			$_SESSION['connected'] = true;
 			$_SESSION['username'] = $Username;

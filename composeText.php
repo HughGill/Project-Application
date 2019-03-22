@@ -1,8 +1,11 @@
-<?php include "templates/header.php"
+<?php include "templates/header.php";
+    
+    if(!isset($_SESSION["connected"]))
+    header("Location: composeText.php");
 ?>
 
 
-<div id="container" name="" class="">
+<div id="container" name="createText" class="modal-dialog modal-lg modal-dialog-centered">
     <form action="composeText.php" method="POST">
         <div class="form-group">
             <label for="recipicent">To:</label>
@@ -25,9 +28,9 @@ $Recipicent = $_POST['recipicent'];
 $Text = $_POST['text'];
 
 $message = $client->message()->send([
-    'to' => '353861036746',
+    'to' => '$Recipicent',
     'from' => 'Nexmo',
-    'text' => 'Hello from Nexmo'
+    'text' => '$Text'
 ]);
 ?>
 
@@ -35,13 +38,13 @@ $message = $client->message()->send([
 if (! empty( $_POST ) ) {
     $Name = $_POST['recipicent'];
     $Text = $_POST['text'];
-    
+    $ID = $_GET['userid'];
 
     $sql = "SELECT * FROM messages WHERE username='$Username'";
     $result = $mysqli->query($sql);
 
     if ($result->num_rows == 0)  {
-        $sql = "INSERT INTO messages (recipicent, text) VALUES ('$Name' , '$Text')";
+        $sql = "INSERT INTO messages (recipicent, text, userid) VALUES ('$Name' , '$Text' , '$ID')";
         $insert = $mysqli->query($sql);
 
         if ( $insert ) { ?>

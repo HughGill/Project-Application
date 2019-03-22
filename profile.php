@@ -3,7 +3,7 @@
 if(!isset($_GET["id"]))
      header("Location: profile.php");
 
-     $ID = $_GET["id"];
+     $ID = $_GET["userid"];
 
     if(!empty($_POST) && $ID == $_SESSION["id"]) {
         $Firstname = $_POST["firstName"];
@@ -40,24 +40,24 @@ if(!isset($_GET["id"]))
 <div class="col-sm-8 offset-sm-2">
     <div class="card my-3 border-dark">
         <div class="card-header bg-dark text-light">
-            <h2><?php echo $user["firstName"]; ?></h2>
+            <h2><?php echo $users["firstName"]; ?></h2>
         </div>
         <div class="card-body col-sm-9 offset-sm-2">
             <div class="row">
                 <div class="col-sm-4"><b>Firstname</b></div>
-                <div class="col-sm-9"><?php echo $user["firstname"]; ?></div>
+                <div class="col-sm-9"><?php echo $users["firstname"]; ?></div>
             </div>
             <div class="row">
                 <div class="col-sm-4"><b>Lastname</b></div>
-                <div class="col-sm-9"><?php echo $user["lastname"]; ?></div>
+                <div class="col-sm-9"><?php echo $users["lastname"]; ?></div>
             </div>
             <div class="row">
                 <div class="col-sm-4"><b>Email</b></div>
-                <div class="col-sm-9"><?php echo $user["email"]; ?></div>
+                <div class="col-sm-9"><?php echo $users["email"]; ?></div>
             </div>
             <div class="row">
                 <div class="col-sm-4"><b>Username</b></div>
-                <div class="col-sm-9"><?php echo $user["username"]; ?></div>
+                <div class="col-sm-9"><?php echo $users["username"]; ?></div>
             </div>
         </div>
     </div>
