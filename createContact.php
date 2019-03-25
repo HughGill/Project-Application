@@ -1,8 +1,10 @@
 <?php include "templates/header.php";
 		if(!isset($_SESSION["connected"]))
-		header("Location: createContact.php");
+		header("Location: index.php");
 ?>
-
+<title>Create Contact</title>
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">Contacts</h1>
+<div class="modal-dialog modal-lg modal-dialog-centered">
   <form action="createContact.php" method="POST">
       <div class="form-group">
         <label for="name">Name:</label>
@@ -18,7 +20,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Add</button>
   </form>
-
+</div>
 <?php
 	if (! empty( $_POST ) ) {
 		$Name = $_POST['name'];
@@ -26,7 +28,7 @@
 		$Mobile = $_POST['mobileNumber'];
 		$ID = $_GET['userid'];
 
-		$sql = "SELECT * FROM contacts WHERE username='$Username'";
+		$sql = "SELECT * FROM contacts WHERE userid='$ID'";
 		$result = $mysqli->query($sql);
 
 		if ($result->num_rows == 0)  {
@@ -40,6 +42,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
+			echo "contacts.php";
 			<?php }
 			else {
 				die("Error: {$mysqli->errno} : {mysqli->error}");

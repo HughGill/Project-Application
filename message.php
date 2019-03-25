@@ -1,57 +1,49 @@
 <?php include "templates/header.php";
 	
 	if(!isset($_SESSION["connected"]))
-     header("Location: message.php");
+     header("Location: index.php");
 
 	if (!empty( $_GET ))
 	{
 		$Recipicent = $_GET['recipicent'];
 		$Text = $_GET['text'];
-        $Id = $_GET['userid'];
+        $ID = $_GET['userid'];
 
-        $sql = "SELECT * from messages WHERE recipicent = '$Recipicent' AND text = '$Model' AND userid = '$Id'";
+        $sql = "SELECT * from messages WHERE recipicent = '$Recipicent' AND text = '$Text' AND userid = '$ID'";
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {
-			$message = $result->fetch_assoc();
 ?>
+<title>Text Screen</title>
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">Messages</h1>
+		<table class="table table-bordered">
 
-<div class="modal-dialog modal-lg modal-dialog-centered">
-    <div id="container" name="" class=""> 
-        <div for="header">
-            <a href="composeText.php"><button type="button" class="btn btn-warning" >Compose Message</button></a>
+            <thead class="thead-dark">
+                <tr>
+                    <th>Sender</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                <?php while($message = $result->fetch_assoc()) {
+                    $ID = $message['userid'];
+                    $sql = "SELECT * FROM users,
+                            WHERE messages.userid = $ID";
+
+                    $customer = $mysqli->query($sql)->fetch_assoc();
+                    ?>
+                    <tr>
+                        <td class="text-right"><?php echo $message["recipicent"];?></td>
+                        <td class="text-right">€<?php echo $message["text"];?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    <?php } else { ?>
+        <div class="alert alert-dark fade show my-3" role="alert">
+            You don't have any Messages
         </div>
-		<div id="container">
-			<form action="message.php" method="GET">
-				<div id="name" name="name" class="">
-					<label id="name" name="name" class="">Name:</label>
-				</div>
-				<div id="text" name="text" class="">
-					<label id="text" name="text" class="">Text:</label>
-				</div>
-			</form>
-		</div>
-	</div>
-
-	<script>
-		function urlify(text) {
-			var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
-			//var urlRegex = /(https?:\/\/[^\s]+)/g;
-			return text.replace(urlRegex, function(url,b,c) {
-				var url2 = (c == 'www.') ?  'http://' +url : url;
-				return '<a href="' +url2+ '" target="_blank">' + url + '</a>';
-			}) 
-		}
-	</script>
-
-</div>
-	<?php }  
-	else { ?>
-		<div class="alert alert-dark fade show my-3" role="alert">
-			There is no messages!
-		</div>
-		}
-	<?php } 
+    <?php }
 	}
 
 include "templates/footer.php";

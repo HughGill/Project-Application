@@ -1,9 +1,10 @@
 <?php include "templates/header.php";
     
     if(!isset($_SESSION["connected"]))
-    header("Location: composeText.php");
+    header("Location: index.php");
 ?>
-
+<title>Create Text</title>
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">Create Message</h1>
 
 <div id="container" name="createText" class="modal-dialog modal-lg modal-dialog-centered">
     <form action="composeText.php" method="POST">
@@ -54,6 +55,7 @@ if (! empty( $_POST ) ) {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+        echo "message.php";
         <?php }
         else {
             die("Error: {$mysqli->errno} : {mysqli->error}");

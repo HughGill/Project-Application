@@ -1,7 +1,10 @@
 <?php include "templates/header.php";?>
+<title>Welcome</title>
 
-<h1 class="col-sm-12 text-center py-4" style="margin-top: 15%">SVI</h1>
-<h1 class="col-sm-12 text-center py-4" style="margin-top: 15%">Smishing Vishing Identifier</h1>
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">S.V.I</h1>
+
+<h6 class="col-sm-12 text-center py-4" style="margin-top: 10%">Smishing Vishing Identifier</h6>
+
 
 <?php 
 if(isset($_SESSION["connected"]) && $_SESSION["connected"]) { ?>

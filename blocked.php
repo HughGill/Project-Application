@@ -1,15 +1,14 @@
 <?php include "templates/header.php";
 	
 	if(!isset($_SESSION["connected"]))
-	header('Location: blocked.php');
-
-	$Id = $_GET['userid'];
+	header('Location: index.php');
 
 	if (!empty( $_GET )) 
     {
+        $Id = $_GET($row['id']);
 		$Number = $_GET['number'];
 
-        $sql = "SELECT * from blocked WHERE number = '$Name' userid = '$Id'";
+        $sql = "SELECT * from blocked WHERE number = '$Number' userid = '$Id'";
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {

@@ -3,21 +3,19 @@
 	if(isset($_SESSION["connected"]))
 		header('Location: index.php');
 ?>
-
-
+<title>Login</title>
 <div class="container">
-		<form action="login.php" method="post" class="form-horizontal col-sm-4 offset-sm-3">
-			<h1>Login</h1>
-			<div class="form-group">
-				<i style='font-size:24px' class='fas' aria-hidden="true" for="username">&#xf007;</i>
-				<input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
-			</div>
-			<div class="form-group">
-				<p><i style='font-size:24px' class='fas' aria-hidden="true" for="password">&#xf023;</i>
-				<input type="password" class="form-control" id="loginpassword" placeholder="Password" name="loginpassword" required></p>
-			</div>
-				<button type="submit" class="btn btn-primary">Login</button>
-		</form>
+	<form action="login.php" method="post">
+		<div class="input-group" style="padding: 8px">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			<input id="username" type="text" class="form-control" name="username" placeholder="Username">
+		</div>
+		<div class="input-group"style="padding: 8px">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+			<input id="loginpassword" type="password" class="form-control" name="loginpassword" placeholder="Password">
+		</div>
+			<button type="submit" class="btn btn-primary">Login</button>
+	</form>
 </div>
 
 
@@ -26,10 +24,10 @@
 	{
 		$Username = $_POST['username'];
 		$Password = $_POST['loginpassword'];
-		$Hash = $_GET['password'];
+		//$Hash = $_GET['password'];
 		//$VerifyPassword = verify_if($Password, $Hash);
 
-		$sql = "SELECT * FROM users WHERE BINARY username='$Username' AND password='$Password'";
+		$sql = "SELECT * FROM users WHERE username='$Username' AND password='$Password'";
 		$select = $mysqli->query($sql);
 
 
@@ -43,15 +41,14 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			exit;
 		<?php }
 
 		if ( $select->num_rows > 0 ) {
 			$row = $select->fetch_assoc();
 			$_SESSION['connected'] = true;
 			$_SESSION['username'] = $Username;
-			$_SESSION['userid'] = $row["id"];
-			header('Location: phone.php');
+			$_SESSION['userid'] = $row['id'];
+			header('Location: index.php');
 		} else { ?>
 			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
 				Error : Wrong user name or password

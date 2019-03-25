@@ -2,11 +2,11 @@
     if(isset($_SESSION["connected"]))
     header('Location: index.php');
 ?>
-  
+  <title>Registration</title>
     <div class="container">
         <form action="register.php" method="post" id="#identicalForm" class="form-horizontal col-sm-6 offset-sm-3" data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
         <h1>Register</h1>
-        <p id="mandatory_fields" class="p">* All Fields are mandatory</p>
+        <p id="mandatory_fields" class="p" style="color: red; font-size: 10px">* All Fields are mandatory</p>
             <div class="form-group row">
                 <input type="text" class="form-control" id="firstName" placeholder="Enter First name" name="firstName" required >
             </div>
@@ -27,7 +27,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
             
-            <div id="login_container">
+            <div id="login_container" style="padding-top:30px;">
             <ul>
                 <li>
                     <a href="login.php">Already a member login</a>

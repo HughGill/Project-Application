@@ -1,6 +1,6 @@
 <?php include "templates/header.php"
 ?>
-    
+<title>Profile</title> 
 <div class="container">
     <form action="log.php" method="GET">
         <div id="" name="" class="">

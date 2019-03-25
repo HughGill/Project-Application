@@ -7,7 +7,6 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    padding-bottom: 70px;
 }
 
 main {
@@ -17,11 +16,12 @@ main {
 }
 
 .footer {
-    height: 30px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     color: black;
     background-color: #f1f1f1;
-    font-size: 12px;
-    padding: 15px;
 }
 
 @media (max-width: 767px) {
@@ -35,11 +35,14 @@ main {
 
 .h1 {
     padding-bottom: 20px;
+    margin-top: 15%;
+    font-size: 25px;
+    text-align: center;
 }
 
 .p {
     color: red;
-    font-size: 10px
+    font-size: 10px;
 }
 
 
@@ -58,20 +61,17 @@ main {
     position: relative;
 }
 
-.form-group input {
+.form-group,
+input {
     padding: 8px;
 }
 
-#form-group.link-to-login {
+#link-to-login {
     padding-top: 50px
 }
 
-.table-of-digits {
+#table-of-digits {
     width: 280px;
-}
-
-.link-to-login {
-    padding-top: 50px;
 }
 
 body {
