@@ -2,8 +2,7 @@
 		if(!isset($_SESSION["connected"]))
 		header("Location: index.php");
 ?>
-<title>Create Contact</title>
-<h1 class="col-sm-6 offset-sm-3 text-center py-4">Contacts</h1>
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">Create Contact</h1>
 <div class="modal-dialog modal-lg modal-dialog-centered">
   <form action="createContact.php" method="POST">
       <div class="form-group">

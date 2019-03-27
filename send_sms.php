@@ -11,3 +11,5 @@ $message = $client->message()->send([
     'from' => 'Nexmo',
     'text' => 'Hello from Nexmo'
 ]);
+?>
+

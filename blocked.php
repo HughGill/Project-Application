@@ -8,7 +8,10 @@
         $Id = $_GET($row['id']);
 		$Number = $_GET['number'];
 
-        $sql = "SELECT * from blocked WHERE number = '$Number' userid = '$Id'";
+        $sql = "SELECT * from blocked, users
+                WHERE blocked.number = '$Number' 
+                AND users.id = blocked.userId'";
+                
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {

@@ -14,7 +14,6 @@
 
         if ($result->num_rows > 0) {
 ?>
-<title>Text Screen</title>
 <h1 class="col-sm-6 offset-sm-3 text-center py-4">Messages</h1>
 		<table class="table table-bordered">
 
@@ -27,8 +26,8 @@
             <tbody class="bg-light">
                 <?php while($message = $result->fetch_assoc()) {
                     $ID = $message['userid'];
-                    $sql = "SELECT * FROM users,
-                            WHERE messages.userid = $ID";
+                    $sql = "SELECT recipicent, text FROM messages, users
+                            WHERE messages.userid = users.id";
 
                     $customer = $mysqli->query($sql)->fetch_assoc();
                     ?>

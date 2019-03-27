@@ -3,7 +3,7 @@
     if(!isset($_GET["id"]))
     header("Location: index.php");
 
-    $ID = $_GET["id"];
+    $ID = $_GET($row["id"]);
 
     if(!empty($_POST) && $ID == $_SESSION["userid"]) {
         $FirstName = $_POST["firstName"];
@@ -34,7 +34,6 @@
         header("Location: index.php");
     }
 ?>
-<title>Profile</title>
 <h1 class="col-sm-6 offset-sm-3 text-center py-4">Profile</h1>
 
 <div class="col-sm-8 offset-sm-2">

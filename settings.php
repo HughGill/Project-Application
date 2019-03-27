@@ -3,7 +3,6 @@
 	header('Location: settings.php');
 ?>
 
-<title>Settings</title>
 <div class="modal-dialog modal-lg modal-dialog-centered" id="tabcontent">	
 	<div style="width:device-width">
 	<table class="table">

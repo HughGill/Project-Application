@@ -2,7 +2,6 @@
     if(isset($_SESSION["connected"]))
     header('Location: index.php');
 ?>
-  <title>Registration</title>
     <div class="container">
         <form action="register.php" method="post" id="#identicalForm" class="form-horizontal col-sm-6 offset-sm-3" data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
         <h1>Register</h1>

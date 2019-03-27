@@ -10,7 +10,9 @@ class ComposerStaticInita2184ad2968887870a1042bdac3a14e9
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         'cf97c57bfe0f23854afd2f3818abb7a0' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/create_uploaded_file.php',
         '9bf37a3d0dad93e29cb4e1b1bfab04e9' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php',
         'ce70dccb4bcc2efc6e94d2ee526e6972' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_method_from_sapi.php',
@@ -26,17 +28,31 @@ class ComposerStaticInita2184ad2968887870a1042bdac3a14e9
         array (
             'Zend\\Diactoros\\' => 15,
         ),
+        'S' => 
+        array (
+            'Slim\\' => 5,
+        ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Container\\' => 14,
         ),
         'N' => 
         array (
             'Nexmo\\' => 6,
         ),
+        'M' => 
+        array (
+            'Mdanter\\Ecc\\' => 12,
+        ),
         'L' => 
         array (
             'Lcobucci\\JWT\\' => 13,
+        ),
+        'I' => 
+        array (
+            'Interop\\Container\\' => 18,
         ),
         'H' => 
         array (
@@ -50,6 +66,11 @@ class ComposerStaticInita2184ad2968887870a1042bdac3a14e9
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
         ),
+        'F' => 
+        array (
+            'FastRoute\\' => 10,
+            'FG\\' => 3,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -57,17 +78,37 @@ class ComposerStaticInita2184ad2968887870a1042bdac3a14e9
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
         ),
+        'Slim\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
         ),
         'Nexmo\\' => 
         array (
             0 => __DIR__ . '/..' . '/nexmo/client/src',
         ),
+        'Mdanter\\Ecc\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mdanter/ecc/src',
+        ),
         'Lcobucci\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
+        'Interop\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
         ),
         'Http\\Promise\\' => 
         array (
@@ -93,6 +134,24 @@ class ComposerStaticInita2184ad2968887870a1042bdac3a14e9
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'FastRoute\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'FG\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fgrosse/phpasn1/lib',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Pimple' => 
+            array (
+                0 => __DIR__ . '/..' . '/pimple/pimple/src',
+            ),
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -100,6 +159,7 @@ class ComposerStaticInita2184ad2968887870a1042bdac3a14e9
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita2184ad2968887870a1042bdac3a14e9::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita2184ad2968887870a1042bdac3a14e9::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita2184ad2968887870a1042bdac3a14e9::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

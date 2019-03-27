@@ -2,7 +2,6 @@
 ?>
 
 <div class="" id="container" name="">
-    
         <div class="" id="incomingNumber" name="incomingNumber">
             <label class="" id="number" name="number"></label>
         </div>

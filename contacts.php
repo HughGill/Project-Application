@@ -15,7 +15,6 @@
         if ($result->num_rows > 0) {
 
 ?>
-    <title>Contacts</title>
         <h1 class="col-sm-6 offset-sm-3 text-center py-4">Contacts</h1>
 		<table class="table table-bordered">
 			

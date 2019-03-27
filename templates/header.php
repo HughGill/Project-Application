@@ -44,12 +44,12 @@
 				<?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
 							if(basename($_SERVER['PHP_SELF']) == "phone.php")  { ?>
 						<li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == "contacts.php"){echo "active";}?>">
-							<a class="nav-link active" href="contacts.php">
+							<a class="nav-link active" href="contacts.php">Contacts
 								<i class="fas fa-address-book"></i>
 							</a>
 						</li>
 						<li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == "log.php"){echo "active";}?>">
-							<a class="nav-link" href="log.php">
+							<a class="nav-link" href="log.php">Call Log
 								<i class="fas fa-list-ul"></i>
 							</a>
 						</li>
@@ -60,7 +60,7 @@
 							if(basename($_SERVER['PHP_SELF']) == "message.php")  { ?>
               <li class="nav-item">
                 <a class="nav-link active" href="composeText.php">
-                  <button>
+                  <button style="background-color: orange; color: white">Compose Text Message
                     <i class="fas fa-pencil-alt"></i>
                   </button>
                 </a>
@@ -69,9 +69,9 @@
           }?>
           <?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
 							if(basename($_SERVER['PHP_SELF']) == "contacts.php")  { ?>
-              <li class="nav-item">
+              <li class="nav-item" style="right: 0;">
                 <a class="nav-link active" href="createContact.php">
-                  <button>
+                  <button style="background-color: blue; color: white">Add contact
                     <i class="fas fa-user-plus"></i>
                   </button>
                 </a>

@@ -3,7 +3,6 @@
     if(!isset($_SESSION["connected"]))
     header("Location: index.php");
 ?>
-<title>Create Text</title>
 <h1 class="col-sm-6 offset-sm-3 text-center py-4">Create Message</h1>
 
 <div id="container" name="createText" class="modal-dialog modal-lg modal-dialog-centered">
@@ -16,7 +15,7 @@
             <label for="text">Text:</label>
             <input type="text" class="form-control" id="text" name="text">
         </div>
-        <button type="submit" class="btn btn-primary">Send</button>
+        <button type="submit" class="btn" style="background-color: white; color: orange"><i class="fas fa-paper-plane"></i></button>
     </form>
 </div>
 
