@@ -7,15 +7,14 @@
 <div class="modal-dialog modal-lg modal-dialog-centered"  id="container">	
 		<div class="container" id="callScreen" name="callScreen">
 			<form action="phone.php" method="post">
-				<div class="container" id="call-screen" style="width: 100%">
-					<div id="display">
-						<div class="display-number" id="display-number">
-							<input class="form-control" name="display" id="display">
-						</div>
-					</div>
-				
+				<div class="container" id="call-screen" style="width: 100%">				
 					<div id="table-of-digits">           
 						<table class="table">
+							<thead>
+								<tr>
+									</td><input class="form-control" name="display" id="display"></td>
+								</tr>
+							</thead>
 							<tbody>
 								<tr>
 									<td><button type="button" class="btn btn-light" value="1" id="phoneNoValue" name="1" onclick="insert(1)">1</button></td>
@@ -55,25 +54,28 @@
 <!-- Scripts for the screen input -->
 <script type="text/javascript">
 	function insert(num) {
-    document.getElementById('display').value += num
-	console.log(num);
-	return false;
+    document.getElementById('#display').value += num
 }
 
 	function back() {
-    var text = document.getElementById('display');
-    var button = document.getElementById('delete');
-
-	button.onclick{
-		text.value -= 1;
+	var value = document.getElementById("#delete").value;
+    document.getElementById("#dispaly").value = value.substr(0, value.length - 1);
 	}
 }
 </script>
 
-<script>
-$('button').click(function(){
-	$('display').val()
-})
+<script type="text/javascript">
+$("#phoneNoValue").on("click", function(event){
+    var num = $(this).text();
+  console.log(num);
+
+  if(num != 'C') {
+    var currentNumber = $("#display").val();
+    $("#display").val(currentNumber.toString() + num.toString());
+  } else {
+    $("#display").val('');
+  }
+});
 </script>
 
 

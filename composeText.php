@@ -5,8 +5,8 @@
 ?>
 <h1 class="col-sm-6 offset-sm-3 text-center py-4">Create Message</h1>
 
-<div id="container" name="createText" class="modal-dialog modal-lg modal-dialog-centered">
-    <form action="composeText.php" method="POST">
+<div id="container" name="createText">
+    <form action="composeText.php" method="POST" class="form-horizontal col-sm-6 offset-sm-3">
         <div class="form-group">
             <label for="recipicent">To:</label>
             <input type="text" class="form-control" id="recipicent" name="recipicent">
@@ -19,7 +19,7 @@
     </form>
 </div>
 
-<?php 
+<!-- <?php 
 require __DIR__ . '/vendor/autoload.php';
 
 $basic  = new \Nexmo\Client\Credentials\Basic('301dce12', 'P8lWKyaGIZ1BaFkf');
@@ -29,10 +29,10 @@ $Text = $_POST['text'];
 
 $message = $client->message()->send([
     'to' => '$Recipicent',
-    'from' => 'Nexmo',
+    'from' => 'Smishing Vishing Application',
     'text' => '$Text'
 ]);
-?>
+?> -->
 
 <?php
 if (! empty( $_POST ) ) {
@@ -54,7 +54,6 @@ if (! empty( $_POST ) ) {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        echo "message.php";
         <?php }
         else {
             die("Error: {$mysqli->errno} : {mysqli->error}");

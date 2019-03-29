@@ -3,8 +3,8 @@
 		header("Location: index.php");
 ?>
 <h1 class="col-sm-6 offset-sm-3 text-center py-4">Create Contact</h1>
-<div class="modal-dialog modal-lg modal-dialog-centered">
-  <form action="createContact.php" method="POST">
+<div class="container">
+  <form action="createContact.php" method="POST" class="form-horizontal col-sm-6 offset-sm-3">
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" name="name">
@@ -41,7 +41,6 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-			echo "contacts.php";
 			<?php }
 			else {
 				die("Error: {$mysqli->errno} : {mysqli->error}");

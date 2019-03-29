@@ -1,11 +1,12 @@
 <?php include 'templates/header.php';
 
-    if(!isset($_GET["id"]))
+    if(!isset($_SESSION["connected"]))
     header("Location: index.php");
 
     $ID = $_GET($row["id"]);
 
     if(!empty($_POST) && $ID == $_SESSION["userid"]) {
+        
         $FirstName = $_POST["firstName"];
         $Lastname = $_POST["lastName"];
         $Email = $_POST["password"];

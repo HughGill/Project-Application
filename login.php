@@ -3,9 +3,10 @@
 	if(isset($_SESSION["connected"]))
 		header('Location: index.php');
 ?>
-<title>Login</title>
+<h1>Login</h1>
 <div class="container">
-	<form action="login.php" method="post">
+	<form action="login.php" method="post" class="form-horizontal col-sm-6 offset-sm-3">
+	<h1>Login</h1>
 		<div class="input-group" style="padding: 8px">
 			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 			<input id="username" type="text" class="form-control" name="username" placeholder="Username">
