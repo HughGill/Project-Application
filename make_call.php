@@ -1,10 +1,10 @@
 <?php 
 // require_once __DIR__ . '/../config.php';
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . './vendor/autoload.php';
 // Building Blocks
 // 1. Make a Phone Call
 // 2. Play Text-to-Speech
-$keypair = new \Nexmo\Client\Credentials\Keypair(file_get_contents(NEXMO_APPLICATION_PRIVATE_KEY_PATH), '1174559e-c7c8-4017-916c-08bd0dfe8fff');
+$keypair = new \Nexmo\Client\Credentials\Keypair(file_get_contents('private.key'), '4ef7a380-730b-453a-9cdf-bfb7da3e6ba0');
 $client = new \Nexmo\Client($keypair);
 $call = $client->calls()->create([
     'to' => [[
@@ -13,7 +13,7 @@ $call = $client->calls()->create([
     ]],
     'from' => [
         'type' => 'phone',
-        'number' => 'Smishing Vishing Application'
+        'number' => '447520635645'
     ],
     'answer_url' => ['https://developer.nexmo.com/ncco/tts.json'],
 ]);

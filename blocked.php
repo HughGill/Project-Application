@@ -5,7 +5,7 @@
 
 	if (!empty( $_GET )) 
     {
-        $Id = $_GET($row['id']);
+        $ID = $_SESSION['userid'];
 		$Number = $_GET['number'];
 
         $sql = "SELECT * from blocked, users

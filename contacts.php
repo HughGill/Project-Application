@@ -7,9 +7,9 @@
 		$Name = $_GET['name'];
 		$PhoneNumber = $_GET['phoneNo'];
         $MobileNumber = $_GET['mobileNo'];
-        $ID = $_GET['userid'];
+        $ID = $_SESSION['userid'];
         
-        $sql = "SELECT * from contacts WHERE name = '$Name' AND phoneNo = '$PhoneNumber' AND MobileNo = '$MobileNumber' AND userid = '$ID'";
+        $sql = "SELECT * from contacts WHERE userid = '$ID'";
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {

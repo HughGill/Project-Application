@@ -3,9 +3,9 @@
     if(!isset($_SESSION["connected"]))
     header("Location: index.php");
 
-    $ID = $_GET($row["id"]);
+    $ID = $_SESSION['userid'];
 
-    if(!empty($_POST) && $ID == $_SESSION["userid"]) {
+    if(!empty($_POST)) {
         
         $FirstName = $_POST["firstName"];
         $Lastname = $_POST["lastName"];
