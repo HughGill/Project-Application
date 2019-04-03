@@ -6,7 +6,7 @@
 
     require '/vendor/autoload.php';
     $app = new \Slim\App;
-    $app->get('https://2e0085ff.ngrok.io/webhooks/answer', function (Request $request, Response $response) {
+    $app->get('https://2e0085ff.ngrok.io/webhook/answer', function (Request $request, Response $response) {
         $params = $request->getQueryParams();
         $fromSplitIntoCharacters = implode(" ", str_split($params['from']));
     
@@ -32,7 +32,7 @@
     </form>
     <form method="post" action="">
         <div class="" id="" name="">
-            <button class="btn btn-danger btn-lg" id="reject" name="reject" style="color:red;border-radius:50%"><i class="fas fa-phone"></i></button>
+            <button class="btn btn-danger btn-lg" id="reject" name="reject" style="color:red;border-radius:50%" call.reject()><i class="fas fa-phone"></i></button>
         </div>
     </form>
 </div>

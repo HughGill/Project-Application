@@ -99,7 +99,7 @@ if (! empty( $_POST ) ) {
     $Email = $_POST['email'];
     $Username = $_POST['username'];
     $Password = test_input($_POST['password']);
-    $CPassword = test_input($_POST['cpassword']);;
+    $CPassword = test_input($_POST['cpassword']);
 
     
 

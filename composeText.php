@@ -8,7 +8,7 @@
 
 <div id="container" name="createText">
     <form action="composeText.php" method="POST" class="form-horizontal col-sm-6 offset-sm-3">
-    <h1 class="col-sm-6 offset-sm-3 text-center py-4">Message</h1>
+    <!-- <h1 class="col-sm-6 offset-sm-3 text-center py-4">Message</h1> -->
         <div class="form-group">
             <span class="input-group-addon" for="recipicent"><label for="recipicent">To:</label></span>
             <input type="text" class="form-control" id="recipicent" name="recipicent">
@@ -18,7 +18,7 @@
             <input type="text" class="form-control" id="text" name="text">
         </div>
         <button type="submit" class="btn" style="background-color: white; color: orange"><i class="fas fa-paper-plane"></i>
-            <label></label>
+            <label>Send</label>
         </button>
     </form>
 </div>
