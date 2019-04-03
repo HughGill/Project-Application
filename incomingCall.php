@@ -1,4 +1,24 @@
-<?php include "templates/header.php"
+<?php include "templates/header.php";
+
+
+    use \Psr\Http\Message\ServerRequestInterface as Request;
+    use \Psr\Http\Message\ResponseInterface as Response;
+
+    require '/vendor/autoload.php';
+    $app = new \Slim\App;
+    $app->get('https://2e0085ff.ngrok.io/webhooks/answer', function (Request $request, Response $response) {
+        $params = $request->getQueryParams();
+        $fromSplitIntoCharacters = implode(" ", str_split($params['from']));
+    
+        $ncco = [
+            [
+                'action' => 'talk',
+                'text' => 'Thank you for calling from '.$fromSplitIntoCharacters
+            ]
+        ];
+    
+        return $response->withJson($ncco);
+    });
 ?>
 
 <div class="" id="container" name="">
@@ -27,7 +47,7 @@
                 type: 'JSON'
             }, function (result) {
                 if (result.countryName != 'IRELAND') {
-                    alert("Warning! this caller isn't calling outside of Ireland");
+                    alert("Warning! this caller is from calling outside of Ireland");
                 }
             });
         });

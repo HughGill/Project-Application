@@ -26,7 +26,7 @@
 
 <?php
 if (! empty( $_POST ) ) {
-    require_once __DIR__ . './vendor/autoload.php';
+    require_once __DIR__ . '/vendor/autoload.php';
 
     $Name = $_POST['recipicent'];
     $Text = $_POST['text'];
@@ -39,7 +39,7 @@ if (! empty( $_POST ) ) {
     $sql = "SELECT * FROM messages WHERE userid='$ID'";
     $result = $mysqli->query($sql);
 
-    if ($result->num_rows == 0)  {
+    if ($result->num_rows > 0)  {
         $sql = "INSERT INTO messages (recipicent, text, userid) VALUES ('$Name' , '$Text' , '$ID')";
         $insert = $mysqli->query($sql);
         

@@ -5,7 +5,7 @@
 
     require '/vendor/autoload.php';
     $app = new \Slim\App;
-    $app->get('https://9f7e616a.ngrok.io/webhooks/answer', function (Request $request, Response $response) {
+    $app->get('https://2e0085ff.ngrok.io/webhooks/answer', function (Request $request, Response $response) {
         $params = $request->getQueryParams();
         $fromSplitIntoCharacters = implode(" ", str_split($params['from']));
     

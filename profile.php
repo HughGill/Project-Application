@@ -9,8 +9,7 @@
         
         $FirstName = $_POST["firstName"];
         $Lastname = $_POST["lastName"];
-        $Email = $_POST["password"];
-        $Username = $_POST["username"];
+        $Email = $_POST["email"];
         $Password = $_POST["password"];
         
 

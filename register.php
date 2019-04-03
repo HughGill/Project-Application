@@ -38,6 +38,61 @@
 	</div>
     
 <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(!empty($Password && ($Password == $CPassword)))
+        {
+            if (strlen($_POST["password"]) < 8) {?>
+                <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
+                    Your Password Must Contain At Least 8 Characters!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php } 
+            else if(!preg_match("#[0-9]+#", $Password)) { ?>
+                <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
+                    Your Password Must Contain At Least 1 Number!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php }
+            else if(!preg_match("#[A-Z]+#", $Password)) {?>
+
+                <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
+                    $error="Your Password Must Contain At Least 1 Capital Letter!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php }
+            else if(!preg_match("#[a-z]+#", $Password)) {?>
+                <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
+                    Your Password Must Contain At Least 1 Lowercase Letter!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php } 
+        }
+        else if(!empty($_POST["password"])) {?>
+        <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
+            Please Check You've Entered Or Confirmed Your Password!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php }
+        else {?>
+        <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
+            Please enter password
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php }
+    }
+
 if (! empty( $_POST ) ) {
     $Firstname = $_POST['firstName'];
     $Lastname = $_POST['surname'];
@@ -46,60 +101,7 @@ if (! empty( $_POST ) ) {
     $Password = test_input($_POST['password']);
     $CPassword = test_input($_POST['cpassword']);;
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if(!empty($Password && ($Password == $CPassword)))
-            {
-                if (strlen($_POST["password"]) < 8) {?>
-                    <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
-                        Your Password Must Contain At Least 8 Characters!
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php } 
-                else if(!preg_match("#[0-9]+#", $Password)) { ?>
-                    <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
-                        Your Password Must Contain At Least 1 Number!
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php }
-                else if(!preg_match("#[A-Z]+#", $Password)) {?>
-
-                    <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
-                        $error="Your Password Must Contain At Least 1 Capital Letter!
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php }
-                else if(!preg_match("#[a-z]+#", $Password)) {?>
-                    <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
-                        Your Password Must Contain At Least 1 Lowercase Letter!
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <?php } 
-            }
-            else if(!empty($_POST["password"])) {?>
-            <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
-                Please Check You've Entered Or Confirmed Your Password!
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <?php }
-            else {?>
-            <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
-                Please enter password
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <?php }
-    }
+    
 
 
         //$Hash = password_hash($Password, PASSWORD_DEFAULT);

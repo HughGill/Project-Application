@@ -9,10 +9,15 @@
 		$Text = $_GET['text'];
         $ID = $_SESSION['userid'];
 
-        $sql = "SELECT * from messages WHERE recipicent = '$Recipicent' AND text = '$Text' AND userid = '$ID'";
+        $sql = "SELECT * from messages WHERE userid = '$ID'";
         $result = $mysqli->query($sql);
 
         if ($result->num_rows > 0) {
+            $message = $result->fetch_assoc();
+
+        } else {
+            header("Location: index.php");
+        }
 ?>
 <h1 class="col-sm-6 offset-sm-3 text-center py-4">Messages</h1>
 		<table class="table table-bordered">
@@ -25,15 +30,15 @@
             </thead>
             <tbody class="bg-light">
                 <?php while($message = $result->fetch_assoc()) {
-                    $ID = $message['userid'];
-                    $sql = "SELECT recipicent, text FROM messages, users
-                            WHERE messages.userid = users.id";
+                    $ID = $_SESSION['userid'];
+                    $sql = "SELECT recipicent, text FROM messages
+                            WHERE userid= '$ID'";
 
-                    $customer = $mysqli->query($sql)->fetch_assoc();
+                    $message = $mysqli->query($sql)->fetch_assoc();
                     ?>
                     <tr>
                         <td class="text-right"><?php echo $message["recipicent"];?></td>
-                        <td class="text-right">€<?php echo $message["text"];?></td>
+                        <td class="text-right"><?php echo $message["text"];?></td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -43,7 +48,6 @@
             You don't have any Messages
         </div>
     <?php }
-	}
 
 include "templates/footer.php";
 ?>
