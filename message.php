@@ -7,7 +7,7 @@
 	{
 		$Recipicent = $_GET['recipicent'];
 		$Text = $_GET['text'];
-        $ID = $_GET['userid'];
+        $ID = $_SESSION['userid'];
 
         $sql = "SELECT * from messages WHERE recipicent = '$Recipicent' AND text = '$Text' AND userid = '$ID'";
         $result = $mysqli->query($sql);

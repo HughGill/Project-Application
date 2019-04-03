@@ -17,30 +17,30 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td><button type="button" class="btn btn-light" value="1" id="phoneNoValue" name="1" onclick="insert(1)">1</button></td>
-									<td><button type="button" class="btn btn-light" value="2" id="phoneNoValue" name="2" onclick="insert(2)">2</button></td>
-									<td><button type="button" class="btn btn-light" value="3" id="phoneNoValue" name="3" onclick="insert(3)">3</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="1" id="phoneNoValue" name="1" data-number="1">1</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="2" id="phoneNoValue" name="2" data-number="2">2</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="3" id="phoneNoValue" name="3" data-number="3">3</button></td>
 								</tr>
 								<tr>
-									<td><button type="button" class="btn btn-light" value="4" id="phoneNoValue" name="4" onclick="insert(4)">4</button></td>
-									<td><button type="button" class="btn btn-light" value="5" id="phoneNoValue" name="5" onclick="insert(5)">5</button></td>
-									<td><button type="button" class="btn btn-light" value="6" id="phoneNoValue" name="6" onclick="insert(6)">6</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="4" id="phoneNoValue" name="4" data-number="4">4</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="5" id="phoneNoValue" name="5" data-number="5">5</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="6" id="phoneNoValue" name="6" data-number="6">6</button></td>
 								</tr>
 								<tr>
-									<td><button type="button" class="btn btn-light" value="7" id="phoneNoValue" name="7" onclick="insert(7)">7</button></td>
-									<td><button type="button" class="btn btn-light" value="8" id="phoneNoValue" name="8" onclick="insert(8)">8</button></td>
-									<td><button type="button" class="btn btn-light" value="9" id="phoneNoValue" name="9" onclick="insert(9)">9</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="7" id="phoneNoValue" name="7" data-number="7">7</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="8" id="phoneNoValue" name="8" data-number="8">8</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="9" id="phoneNoValue" name="9" data-number="9">9</button></td>
 									
 								</tr>
 								<tr>
-									<td><button type="button" class="btn btn-light" value="*" id="phoneNoValue" name="*" onclick="insert(*)">*</button></td>
-									<td><button type="button" class="btn btn-light" value="0" id="phoneNoValue" name="0" onclick="insert(0)">0</button></td>
-									<td><button type="button" class="btn btn-light" value="#" id="phoneNoValue" name="#" onclick="insert(#)">#</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="*" id="phoneNoValue" name="*" data-number="*">*</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="0" id="phoneNoValue" name="0" data-number="0">0</button></td>
+									<td><button type="button" class="btn btn-light btn-xs1 dial" value="#" id="phoneNoValue" name="#" data-number="#">#</button></td>
 								</tr>
 								<tr>
+									<td><button type="button" class="btn btn-lg btn-light" id="clear" name="clear" value="C">C</button></td>
+									<td><button type="submit" class="btn btn-lg btn-success" id="call" name="call" style="border-radius: 50%"><i class="fas fa-phone"></i></button></td>
 									<td></td>
-									<td><button type="button" class="btn btn-success" id="call" name="call"><i class="fas fa-phone"></i></button></td>
-									<td><button type="button" class="btn btn-light" id="delete" name="delete" onclick=back() style="color:black"><i class="fas fa-backspace"></i></button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -53,33 +53,50 @@
 </div>
 <!-- Scripts for the screen input -->
 <script type="text/javascript">
-	function insert(num) {
-    document.getElementById('#display').value += num
-}
+$(".dial").click(function () {
+    var number = $(this).data('number');
+    $("#display").val(function() {
+        return this.value + number;
+    });
+});
 
-	function back() {
-	var value = document.getElementById("#delete").value;
-    document.getElementById("#dispaly").value = value.substr(0, value.length - 1);
-	}
-}
-</script>
-
-<script type="text/javascript">
-$("#phoneNoValue").on("click", function(event){
-    var num = $(this).text();
-  console.log(num);
-
-  if(num != 'C') {
-    var currentNumber = $("#display").val();
-    $("#display").val(currentNumber.toString() + num.toString());
-  } else {
-    $("#display").val('');
-  }
+$("#clear").click(function (){
+	$("#display").val(function(){
+		return this.value = '';
+	})
 });
 </script>
 
 
 <!-- nexmo connection -->
+<?php 
+	if (! empty( $_POST ) ) {
 
-<?php include "templates/footer.php"
+		$Number = $_POST['display'];
+
+		require_once __DIR__ . './vendor/autoload.php';
+		// Building Blocks
+		// 1. Make a Phone Call
+		// 2. Play Text-to-Speech
+		$keypair = new \Nexmo\Client\Credentials\Keypair(file_get_contents('private.key'), 'b8846262-5efa-49e4-ac83-0252a7b44bfb');
+		$client = new \Nexmo\Client($keypair);
+		try{
+			$call = $client->calls()->create([
+				'to' => [[
+					'type' => 'phone',
+					'number' => $Number
+				]],
+				'from' => [
+					'type' => 'phone',
+					'number' => '12046743488'
+				],
+				'answer_url' => ['https://developer.nexmo.com/ncco/tts.json'],
+			]);
+		}
+		catch (Exception $e){
+		echo "The call couldn't be made. Error: " . $e->getMessage() . "\n";    
+		}
+	}
+
+include "templates/footer.php"
 ?>

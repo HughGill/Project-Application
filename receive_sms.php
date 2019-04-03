@@ -2,7 +2,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 
 $app = new \Slim\App;
 
@@ -15,7 +15,8 @@ $handler = function (Request $request, Response $response) {
     error_log(print_r($params, true));
     return $response->withStatus(204);
 };
-$app->get('/webhooks/inbound-sms', $handler);
-$app->post('/webhooks/inbound-sms', $handler);
+
+$app->get('https://9f7e616a.ngrok.io/webhook/inbound-sms', $handler);
+$app->post('https://9f7e616a.ngrok.io/webhook/inbound-sms', $handler);
 
 $app->run();

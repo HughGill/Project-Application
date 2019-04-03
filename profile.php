@@ -5,7 +5,7 @@
 
     $ID = $_SESSION['userid'];
 
-    if(!empty($_POST)) {
+    if(!empty($_POST) && $ID == $_SESSION['userid']) {
         
         $FirstName = $_POST["firstName"];
         $Lastname = $_POST["lastName"];
@@ -15,7 +15,7 @@
         
 
         $sql = "UPDATE users
-                SET firstName = '$FirstName', lastName = '$Lastname', email = '$Email', username = '$Username', password = '$Password'
+                SET firstName = '$FirstName', lastName = '$Lastname', email = '$Email', password = '$Password'
                 WHERE id = $ID";
         $update = $mysqli->query($sql);
 
@@ -39,7 +39,7 @@
 
 <div class="col-sm-8 offset-sm-2">
     <div class="card my-3 border-dark">
-        <div class="card-header bg-dark text-light">
+        <div class="card-header bg-light text-dark">
             <h2><?php echo $user["firstName"]; ?></h2>
         </div>
         <div class="card-body col-sm-8 offset-sm-2">
@@ -79,7 +79,7 @@
                             <div class="form-group row">
                                 <label class="control-label col-sm-3 text-dark" for="lastName">Lastname: </label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Lastname" name="Lastname" value="<?php echo $user["lastName"]; ?>" required>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Lastname" name="lastName" value="<?php echo $user["lastName"]; ?>" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -89,9 +89,9 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="control-label col-sm-3 text-dark" for="username">Username: </label>
+                                <label class="control-label col-sm-3 text-dark" for="username" disabled>Username: </label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" value="<?php echo $user["username"]; ?>" required>
+                                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" value="<?php echo $user["username"]; ?>" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">

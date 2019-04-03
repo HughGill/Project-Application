@@ -1,6 +1,8 @@
 <?php include "templates/header.php";
 		if(!isset($_SESSION["connected"]))
 		header("Location: index.php");
+
+		$ID = $_SESSION['userid'];
 ?>
 <h1 class="col-sm-6 offset-sm-3 text-center py-4">Create Contact</h1>
 <div class="container">
@@ -25,7 +27,6 @@
 		$Name = $_POST['name'];
 		$Phone = $_POST['phoneNumber'];
 		$Mobile = $_POST['mobileNumber'];
-		$ID = $_GET['userid'];
 
 		$sql = "SELECT * FROM contacts WHERE userid='$ID'";
 		$result = $mysqli->query($sql);

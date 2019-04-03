@@ -17,7 +17,9 @@
             <span class="input-group-addon" for="text"><label for="text">Text:</label></span>
             <input type="text" class="form-control" id="text" name="text">
         </div>
-        <button type="submit" class="btn" style="background-color: white; color: orange"><i class="fas fa-paper-plane"></i></button>
+        <button type="submit" class="btn" style="background-color: white; color: orange"><i class="fas fa-paper-plane"></i>
+            <label></label>
+        </button>
     </form>
 </div>
 
@@ -28,7 +30,7 @@ if (! empty( $_POST ) ) {
 
     $Name = $_POST['recipicent'];
     $Text = $_POST['text'];
-
+    $Username = $_SESSION['username'];
 
     //Nexmo Variables
     $basic  = new \Nexmo\Client\Credentials\Basic('301dce12', 'P8lWKyaGIZ1BaFkf');
@@ -44,7 +46,7 @@ if (! empty( $_POST ) ) {
         try {
             $message = $client->message()->send([
                 'to' => $Name,
-                'from' => 'Application',
+                'from' => $Username,
                 'text' => $Text
             ]);
             $response = $message->getResponseData();

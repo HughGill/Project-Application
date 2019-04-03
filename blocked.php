@@ -8,9 +8,9 @@
         $ID = $_SESSION['userid'];
 		$Number = $_GET['number'];
 
-        $sql = "SELECT * from blocked, users
-                WHERE blocked.number = '$Number' 
-                AND users.id = blocked.userId'";
+        $sql = "SELECT * from blocked
+                WHERE number = '$Number' 
+                AND userid= '$ID'";
                 
         $result = $mysqli->query($sql);
 
