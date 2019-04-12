@@ -1,8 +1,7 @@
-<?php 
-require_once __DIR__ . '/../config.php';
+<?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-$basic  = new \Nexmo\Client\Credentials\Basic(NEXMO_API_KEY, NEXMO_API_SECRET);
+$basic  = new \Nexmo\Client\Credentials\Basic('301dce12', 'P8lWKyaGIZ1BaFkf');
 $client = new \Nexmo\Client($basic);
 
 $insights = $client->insights()->advanced(INSIGHT_NUMBER);

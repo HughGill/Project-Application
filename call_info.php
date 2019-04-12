@@ -6,7 +6,7 @@ $keypair = new \Nexmo\Client\Credentials\Keypair(file_get_contents('private.key'
 $client = new \Nexmo\Client($keypair);
 
 $filter = new \Nexmo\Call\Filter();
-$filter->setStart(new DateTime('- 1 day'));
+$filter->setStart(new DateTime('- 30 day'));
 $filter->setEnd(new DateTime);
 
 foreach ($client->calls($filter) as $call){

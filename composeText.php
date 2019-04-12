@@ -7,8 +7,8 @@
 ?>
 
 <div id="container" name="createText">
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">Message</h1>
     <form action="composeText.php" method="POST" class="form-horizontal col-sm-6 offset-sm-3">
-    <!-- <h1 class="col-sm-6 offset-sm-3 text-center py-4">Message</h1> -->
         <div class="form-group">
             <span class="input-group-addon" for="recipicent"><label for="recipicent">To:</label></span>
             <input type="text" class="form-control" id="recipicent" name="recipicent">
@@ -17,8 +17,8 @@
             <span class="input-group-addon" for="text"><label for="text">Text:</label></span>
             <input type="text" class="form-control" id="text" name="text">
         </div>
-        <button type="submit" class="btn" style="background-color: white; color: orange"><i class="fas fa-paper-plane"></i>
-            <label>Send</label>
+        <button type="submit" class="btn" style="background-color: white; color: orange" id="send" name="send"><i class="fas fa-paper-plane"></i>
+            <label for="send" style="size: 6px; color: black">Send</label>
         </button>
     </form>
 </div>
@@ -51,7 +51,7 @@ if (! empty( $_POST ) ) {
             ]);
             $response = $message->getResponseData();
             if($response['messages'][0]['status'] == 0) {
-                echo "The message was sent successfully\n";
+                //echo "The message was sent successfully\n";
             } else {
                 echo "The message failed with status: " . $response['messages'][0]['status'] . "\n";
             }

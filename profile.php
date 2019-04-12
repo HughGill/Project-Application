@@ -10,11 +10,11 @@
         $FirstName = $_POST["firstName"];
         $Lastname = $_POST["lastName"];
         $Email = $_POST["email"];
-        $Password = $_POST["password"];
-        
+        $Password = $_POST["epassword"];
+        $HashThePassword = password_hash($Password, PASSWORD_DEFAULT);
 
         $sql = "UPDATE users
-                SET firstName = '$FirstName', lastName = '$Lastname', email = '$Email', password = '$Password'
+                SET firstName = '$FirstName', lastName = '$Lastname', email = '$Email', password = '$HashThePassword'
                 WHERE id = $ID";
         $update = $mysqli->query($sql);
 
@@ -25,7 +25,7 @@
         }
     }
 
-    $sql = "SELECT * FROM users WHERE id = $ID";
+    $sql = "SELECT firstName, lastName, email, username  FROM users WHERE id = $ID";
     $result = $mysqli->query($sql);
 
     if($result->num_rows > 0) {
@@ -88,15 +88,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="control-label col-sm-3 text-dark" for="username" disabled>Username: </label>
+                                <label class="control-label col-sm-3 text-dark" for="epassword">Password: </label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" value="<?php echo $user["username"]; ?>" disabled>
+                                    <input type="password" class="form-control" id="epassword" placeholder="Enter Password" name="epassword" value="<?php echo $user["password"]; ?>" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="control-label col-sm-3 text-dark" for="password">Password: </label>
+                                <label class="control-label col-sm-3 text-dark" for="username" disabled>Username: </label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" value="<?php echo $user["password"]; ?>" required>
+                                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" value="<?php echo $user["username"]; ?>" disabled>
                                 </div>
                             </div>
                             <div class="form-group row">        

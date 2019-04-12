@@ -1,8 +1,8 @@
-<?php 
+<?php include "./templates/header.php";
 
-if(! empty( $_POST )){
+if(isset( $_POST['block'])){
 
-    $Number = $_POST['number'];
+    $Number = $_POST['display'];
     $ID = $_SESSION['userid'];
 
     $sql = "SELECT * FROM blocked WHERE userid='$ID'";

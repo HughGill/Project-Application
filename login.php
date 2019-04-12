@@ -21,35 +21,21 @@
 
 
 <?php
-	if (! empty( $_POST ) )
+
+if (! empty( $_POST ) )
 	{
 		$Username = $_POST['username'];
 		$Password = $_POST['loginpassword'];
-		//$Hash = $_GET['password'];
-		//$VerifyPassword = verify_if($Password, $Hash);
 
 		$sql = "SELECT * FROM users WHERE username='$Username' AND password='$Password'";
 		$select = $mysqli->query($sql);
 
-
-		//$VerifyPassword==true;
-
-
-		if( $select->num_rows > 0 ) {?>
-			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
-				Invalid Password
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-		<?php }
-
-		if ( $select->num_rows > 0 ) {
+		if ( $select->num_rows > 0) {
 			$row = $select->fetch_assoc();
 			$_SESSION['connected'] = true;
 			$_SESSION['username'] = $Username;
-			$_SESSION['userid'] = $row['id'];
-			header('Location: index.php');
+			$_SESSION['userid'] = $row["id"];
+			header('Location: phone.php');
 		} else { ?>
 			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
 				Error : Wrong user name or password
@@ -60,6 +46,8 @@
 		<?php }
 	}
 ?>	
+
+	
 	
 <?php include "templates/footer.php"
 ?>

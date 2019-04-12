@@ -17,7 +17,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Page Title</title>
+	<title>Smishing Vishing Application</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" media="device" href="style/app.css" />
 
@@ -59,7 +59,7 @@
           <?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
 							if(basename($_SERVER['PHP_SELF']) == "message.php")  { ?>
               <li class="nav-item">
-                <a class="nav-link active" href="composeText.php">
+                <a class="nav-link active" href="../composeText.php">
                   <button style="background-color: orange; color: white">Compose Text Message
                     <i class="fas fa-pencil-alt"></i>
                   </button>
