@@ -34,11 +34,23 @@
             <tr>
                 <td class="text-right"><?php echo $row["mobileNo"];?></td>
             </tr>
-        <?php }?> 
+        <?php } 
         
-            </tbody>
-        </table>
-    <?php } 
+            
+    } 
+    else { ?>
+        <tr>
+            <td><div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+                There is no Contacts
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </td></div>
+        </tr>
+    </tbody>
+</table>
+<?php } 
+    
     
 include "templates/footer.php"
 ?>

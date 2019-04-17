@@ -35,7 +35,7 @@ if (! empty( $_POST ) )
 			$_SESSION['connected'] = true;
 			$_SESSION['username'] = $Username;
 			$_SESSION['userid'] = $row["id"];
-			header('Location: phone.php');
+			header('Location: index.php');
 		} else { ?>
 			<div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
 				Error : Wrong user name or password

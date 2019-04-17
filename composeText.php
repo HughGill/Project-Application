@@ -30,6 +30,7 @@ if (! empty( $_POST ) ) {
 
     $Name = $_POST['recipicent'];
     $Text = $_POST['text'];
+    $Direction = "outbound";
     $Username = $_SESSION['username'];
 
     //Nexmo Variables
@@ -40,7 +41,7 @@ if (! empty( $_POST ) ) {
     $result = $mysqli->query($sql);
 
     if ($result->num_rows > 0)  {
-        $sql = "INSERT INTO messages (recipicent, text, userid) VALUES ('$Name' , '$Text' , '$ID')";
+        $sql = "INSERT INTO messages (recipicent, text, direction, userid) VALUES ('$Name' , '$Text' , '$Direction' , '$ID')";
         $insert = $mysqli->query($sql);
         
         try {

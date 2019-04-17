@@ -3,35 +3,37 @@
 	if(!isset($_SESSION["connected"]))
 	header('Location: index.php');
 
-	if (!empty( $_GET )) 
-    {
-        $ID = $_SESSION['userid'];
-		$Number = $_GET['number'];
+    $ID = $_SESSION['userid'];
+    
+    $sql = "SELECT * from blocked
+            WHERE userid= '$ID'";
+            
+    $result = $mysqli->query($sql);
 
-        $sql = "SELECT * from blocked
-                WHERE number = '$Number' 
-                AND userid= '$ID'";
-                
-        $result = $mysqli->query($sql);
-
-        if ($result->num_rows > 0) {
-            $blocked = $result->fetch_assoc();
+    if ($result->num_rows > 0) {
 ?>
 
-    <div id="container" class="modal-dialog modal-lg modal-dialog-centered">
-        <form method="Get" action="blocked.php">
-            <div id="container">
-                <div>
-                    <label>Number:	</label>
-                </div>
-            </div>
-        </form>  
-	</div>
-	<?php }
-	else { ?>
-			<div class="alert alert-dark fade show my-3" role="alert">There is no blocked Numbers! </div>
-		<?php }
-	}
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">Blocked Numbers</h1>
+    <?php while($row = $result->fetch_assoc()) { ?>
+        <table class="table table-bordered">
+            <tbody class="bg-light">
+            <tr>
+                <th>Number</th>
+            </tr>
+            <tr>
+                <th><?php echo $row['number']; ?></th>
+            </tr>
+
+    <?php }   
+} else {?>
+        <div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+            There is no blocked Numbers
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+<?php }
 
 include "templates/footer.php"
 ?>

@@ -10,8 +10,8 @@
 								<i class="fas fa-phone"></i>
 							</a>
 						</li>
-						<li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == "message.php"){echo "active";}?>">
-							<a class="nav-link" href="message.php">
+						<li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == "messages.php"){echo "active";}?>">
+							<a class="nav-link" href="messages.php">
 								<i class="fas fa-envelope"></i>
 							</a>
 						</li>
