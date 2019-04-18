@@ -40,11 +40,14 @@
 								<tr>
 									<td><button type="button" class="btn btn-lg btn-light" id="clear" name="clear" value="C">C</button></td>
 									<td><button type="submit" class="btn btn-lg btn-success" id="call" name="call" style="border-radius: 50%"><i class="fas fa-phone"></i></button></td>
+									</form>		
 									<td><button type="button" class="btn btn-primary dropdown-toggle" id="option" name="option" data-toggle="dropdown">
 										<i class="fas fa-plus"></i>
 											<span class="caret"></span></button>
 												<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-													<li role="presentation"><a role="menuitem" href="block.php">Block</a></li>
+													<form action="block.php" method="post">
+													<li role="presentation"><button role="menuitem" type="submit" name="block" id="block">Block</button></li>
+													</form>
 													<li role="presentation"><a role="menuitem" href="createContact.php">Add to Contacts</a></li>
 												</ul>
 									</td>
@@ -54,7 +57,6 @@
 					</div>
 
 				</div>
-			</form>
 		</div>
 	</div>
 </div>

@@ -19,8 +19,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Smishing Vishing Application</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" media="device" href="style/app.css" />
-
+	<link rel="stylesheet" type="text/css"  href="./style/app.css"/>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -40,7 +39,7 @@
 	
 <header>
 
-<ul class="nav nav-tabs nav-justified">
+<ul class="nav nav-tabs nav-justified" style="width:100%;padding-top:3px;padding-bottom:3px">
 				<?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
 							if(basename($_SERVER['PHP_SELF']) == "phone.php")  { ?>
 						<li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == "contacts.php"){echo "active";}?>">
@@ -57,12 +56,18 @@
         }?>
 
           <?php if(isset($_SESSION['connected']) && $_SESSION['connected']) { 
-							if(basename($_SERVER['PHP_SELF']) == "message.php")  { ?>
-              <li class="nav-item">
-                <a class="nav-link active" href="../composeText.php">
-                  <button style="background-color: orange; color: white">Compose Text Message
+							if(basename($_SERVER['PHP_SELF']) == "messages.php" || basename($_SERVER['PHP_SELF']) == "inboundMessages.php")  { ?>
+              <li class="nav-item" <?php if(basename($_SERVER['PHP_SELF']) == "messages.php"){echo "active";}?>>
+              <a class="nav-link active" href="messages.php">Sent Messages
+                </a>
+              </li>
+              <li class="nav-item" <?php if(basename($_SERVER['PHP_SELF']) == "inboundMessages.php"){echo "active";}?>>
+              <a class="nav-link active" href="inboundMessages.php">Inbound Messages
+                </a>
+              </li>
+              <li class="nav-item" style="background-color:orangered;color:white">
+                <a class="nav-link active" href="composeText.php">Create Message
                     <i class="fas fa-pencil-alt"></i>
-                  </button>
                 </a>
               </li>
               <?php }

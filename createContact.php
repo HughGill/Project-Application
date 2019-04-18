@@ -31,7 +31,7 @@
 		$sql = "SELECT * FROM contacts WHERE userid='$ID'";
 		$result = $mysqli->query($sql);
 
-		if ($result->num_rows == 0)  {
+		if ($result->num_rows > 0)  {
 			$sql = "INSERT INTO contacts ( name, phoneNo, mobileNo, userid) VALUES ('$Name' , '$Phone', '$Mobile', '$ID')";
 			$insert = $mysqli->query($sql);
 	

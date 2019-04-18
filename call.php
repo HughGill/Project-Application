@@ -13,6 +13,7 @@ $ncco = [
         'text' => "This is a call from $from. Thank you for calling, this the Nexmo API."
     ]
 ];
+
 header('Content-Type: application/json');
 $json = json_encode($ncco);
 echo($json);

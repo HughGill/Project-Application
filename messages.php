@@ -13,24 +13,7 @@
     if ($result->num_rows > 0) {
 ?>
 
-<h1 class="col-sm-6 offset-sm-3 text-center py-4">Messages</h1>
-    <div class="container mt-3">
-        <ul class="nav nav-tabs nav-justified" style="position: fixed;padding: 10px;width: 100%">
-            <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == "messages.php"){echo "active";}?>">
-                <a class="nav-link active" href="messages.php">
-                    Sent Messages
-                </a>
-            </li>
-            <li class="nav-item <?php if(basename($_SERVER['PHP_SELF']) == "inbound-messages.php"){echo "active";}?>">
-                <a class="nav-link" href="inbound-messages.php">
-                    Inbound Messages
-                </a>
-            </li>
-        </ul>
-    </div>
-
-                    
-                        
+<h1 class="col-sm-6 offset-sm-3 text-center py-4">Messages</h1>                    
 
 <?php while($rows = $result->fetch_assoc()) { ?>
 <table class="table table-bordered" style="align-center">
